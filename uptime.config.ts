@@ -120,9 +120,9 @@ const workerConfig: WorkerConfig = {
       // `name` is used at status page and callback message
       name: 'Untitled Computer',
       // `method` should be a valid HTTP Method
-      method: 'GET',
+      method: 'TCP_PING',
       // `target` is a valid URL
-      target: 'http://89.24.133.226',
+      target: '89.24.133.226:80',
       // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
       //tooltip: 'This is a tooltip for this monitor',
       // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
