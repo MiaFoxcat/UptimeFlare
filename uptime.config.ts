@@ -196,7 +196,7 @@ const maintenances: MaintenanceConfig[] = [
     // [Optional] default to "Scheduled Maintenance" if not specified
     title: 'Proxy rework and anubis setup',
     // Description of the maintenance, will be shown at status page
-    body: 'This is a test maintenance, server software upgrade',
+    body: 'Services may experience temporary downtime',
     // Start time of the maintenance, in UNIX timestamp or ISO 8601 format
     start: '2025-07-01T00:15:45+02:00',
     // [Optional] end time of the maintenance, in UNIX timestamp or ISO 8601 format
