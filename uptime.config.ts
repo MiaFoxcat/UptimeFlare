@@ -192,16 +192,16 @@ const workerConfig: WorkerConfig = {
 const maintenances: MaintenanceConfig[] = [
   {
     // [Optional] Monitor IDs to be affected by this maintenance
-    monitors: ['git-mia', 'outline-mia', 'grafana-mia'],
+    monitors: ['git-mia', 'outline-mia', 'grafana-mia', 'untcomp'],
     // [Optional] default to "Scheduled Maintenance" if not specified
-    title: 'Proxy rework and anubis setup',
+    title: 'Hardware testing and configuration',
     // Description of the maintenance, will be shown at status page
-    body: 'Services may experience temporary downtime',
+    body: 'Services may experience temporary downtime, high ping, and/or instability',
     // Start time of the maintenance, in UNIX timestamp or ISO 8601 format
-    start: '2025-07-01T15:45:00+02:00',
+    start: '2025-07-18T08:20:00+02:00',
     // [Optional] end time of the maintenance, in UNIX timestamp or ISO 8601 format
     // if not specified, the maintenance will be considered as on-going
-    end: '2025-07-02T18:45:00+02:00',
+    //end: '2025-07-02T18:45:00+02:00',
     // [Optional] color of the maintenance alert at status page, default to "yellow"
     color: 'blue',
   },
