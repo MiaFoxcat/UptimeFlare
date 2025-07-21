@@ -201,7 +201,7 @@ const maintenances: MaintenanceConfig[] = [
     start: '2025-07-18T08:20:00+02:00',
     // [Optional] end time of the maintenance, in UNIX timestamp or ISO 8601 format
     // if not specified, the maintenance will be considered as on-going
-    //end: '2025-07-02T18:45:00+02:00',
+    end: '2025-07-21T17:20:00+02:00',
     // [Optional] color of the maintenance alert at status page, default to "yellow"
     color: 'blue',
   },
