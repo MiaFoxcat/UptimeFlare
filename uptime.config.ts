@@ -12,7 +12,6 @@ const pageConfig: PageConfig = {
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
   group: {
     'MiaFoxcat services': ['git-mia', 'outline-mia', 'grafana-mia'],
-    'Other': ['ocgoss', 'untcomp'],
   },
 }
 
@@ -102,44 +101,6 @@ const workerConfig: WorkerConfig = {
       // [OPTIONAL] if specified, the response must NOT contains the keyword to be considered as operational.
       responseForbiddenKeyword: 'bad gateway',
     },
-    // Example TCP Monitor
-    {
-      id: 'ocgoss',
-      name: 'OCGOSS MC server',
-      // `method` should be `TCP_PING` for tcp monitors
-      method: 'TCP_PING',
-      // `target` should be `host:port` for tcp monitors
-      target: 'ocgoss.miafoxcat.gay:25565',
-      tooltip: '',
-      statusPageLink: '',
-      timeout: 5000,
-    },
-    {
-      // `id` should be unique, history will be kept if the `id` remains constant
-      id: 'untcomp',
-      // `name` is used at status page and callback message
-      name: 'Untitled Computer',
-      // `method` should be a valid HTTP Method
-      method: 'TCP_PING',
-      // `target` is a valid URL
-      target: '89.24.133.226:80',
-      // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
-      //tooltip: 'This is a tooltip for this monitor',
-      // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
-      //statusPageLink: 'https://status.miafoxcat.gay',
-      // [OPTIONAL] `hideLatencyChart` will hide status page latency chart if set to true
-      hideLatencyChart: false,
-      // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
-      //expectedCodes: [200, 404],
-      // [OPTIONAL] `timeout` in millisecond, if not specified, default to 10000
-      timeout: 10000,
-      // [OPTIONAL] headers to be sent
-      headers: {
-        'User-Agent': 'Uptimeflare',
-      },
-      // [OPTIONAL] if specified, the response must NOT contains the keyword to be considered as operational.
-      responseForbiddenKeyword: 'bad gateway',
-    },
   ],
   notification: {
     // [Optional] apprise API server URL
@@ -192,18 +153,18 @@ const workerConfig: WorkerConfig = {
 const maintenances: MaintenanceConfig[] = [
   {
     // [Optional] Monitor IDs to be affected by this maintenance
-    monitors: ['git-mia', 'outline-mia', 'grafana-mia', 'untcomp'],
+    monitors: ['git-mia', 'outline-mia'],
     // [Optional] default to "Scheduled Maintenance" if not specified
-    title: 'Hardware testing and configuration',
+    title: 'Maintenance - server reorganization',
     // Description of the maintenance, will be shown at status page
-    body: 'Services may experience temporary downtime, high ping, and/or instability',
+    body: 'Services may experience temporary downtime',
     // Start time of the maintenance, in UNIX timestamp or ISO 8601 format
-    start: '2025-07-18T08:20:00+02:00',
+    start: '2025-07-26T16:00:00+02:00',
     // [Optional] end time of the maintenance, in UNIX timestamp or ISO 8601 format
     // if not specified, the maintenance will be considered as on-going
-    end: '2025-07-21T17:20:00+02:00',
+    end: '2025-07-26T20:00:00+02:00',
     // [Optional] color of the maintenance alert at status page, default to "yellow"
-    color: 'blue',
+    //color: 'blue',
   },
 ]
 
