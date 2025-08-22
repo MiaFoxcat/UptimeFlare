@@ -11,7 +11,8 @@ const pageConfig: PageConfig = {
   // If not specified, all monitors will be shown in a single list
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
   group: {
-    'MiaFoxcat services': ['git-mia', 'outline-mia', 'grafana-mia'],
+    'MiaFoxcat services': ['foxcat', 'git-mia', 'outline-mia', 'grafana-mia'],
+    'Periapsis services': ['git-periapsis', 'outline-periapsis'],
   },
 }
 
@@ -23,6 +24,32 @@ const workerConfig: WorkerConfig = {
   // Define all your monitors here
   monitors: [
     // Example HTTP Monitor
+    {
+      // `id` should be unique, history will be kept if the `id` remains constant
+      id: 'foxcat',
+      // `name` is used at status page and callback message
+      name: 'MiaFoxcat website',
+      // `method` should be a valid HTTP Method
+      method: 'GET',
+      // `target` is a valid URL
+      target: 'https://miafoxcat.gay',
+      // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
+      //tooltip: 'This is a tooltip for this monitor',
+      // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
+      statusPageLink: 'https://miafoxcat.gay',
+      // [OPTIONAL] `hideLatencyChart` will hide status page latency chart if set to true
+      hideLatencyChart: false,
+      // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
+      expectedCodes: [200],
+      // [OPTIONAL] `timeout` in millisecond, if not specified, default to 10000
+      timeout: 60000,
+      // [OPTIONAL] headers to be sent
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
+      // [OPTIONAL] if specified, the response must NOT contains the keyword to be considered as operational.
+      responseForbiddenKeyword: 'bad gateway',
+    },
     {
       // `id` should be unique, history will be kept if the `id` remains constant
       id: 'git-mia',
@@ -101,6 +128,55 @@ const workerConfig: WorkerConfig = {
       // [OPTIONAL] if specified, the response must NOT contains the keyword to be considered as operational.
       responseForbiddenKeyword: 'bad gateway',
     },
+    {
+      // `id` should be unique, history will be kept if the `id` remains constant
+      id: 'git-periapsis',
+      // `name` is used at status page and callback message
+      name: 'Periapsis git',
+      // `method` should be a valid HTTP Method
+      method: 'GET',
+      // `target` is a valid URL
+      target: 'https://git.periapsis.dev',
+      // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
+      //tooltip: 'This is a tooltip for this monitor',
+      // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
+      statusPageLink: 'https://git.periapsis.dev',
+      // [OPTIONAL] `hideLatencyChart` will hide status page latency chart if set to true
+      hideLatencyChart: false,
+      // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
+      expectedCodes: [200],
+      // [OPTIONAL] `timeout` in millisecond, if not specified, default to 10000
+      timeout: 60000,
+      // [OPTIONAL] headers to be sent
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
+      // [OPTIONAL] if specified, the response must NOT contains the keyword to be considered as operational.
+      responseForbiddenKeyword: 'bad gateway',
+    },
+    {
+      // `id` should be unique, history will be kept if the `id` remains constant
+      id: 'outline-periapsis',
+      // `name` is used at status page and callback message
+      name: 'Periapsis docs',
+      // `method` should be a valid HTTP Method
+      method: 'GET',
+      // `target` is a valid URL
+      target: 'https://doc.periapsis.dev',
+      // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
+      //tooltip: 'This is a tooltip for this monitor',
+      // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
+      statusPageLink: 'https://docs.periapsis.dev',
+      // [OPTIONAL] `hideLatencyChart` will hide status page latency chart if set to true
+      hideLatencyChart: false,
+      // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
+      expectedCodes: [200],
+      // [OPTIONAL] `timeout` in millisecond, if not specified, default to 10000
+      timeout: 60000,
+      // [OPTIONAL] headers to be sent
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
   ],
   notification: {
     // [Optional] apprise API server URL
@@ -153,16 +229,16 @@ const workerConfig: WorkerConfig = {
 const maintenances: MaintenanceConfig[] = [
   {
     // [Optional] Monitor IDs to be affected by this maintenance
-    monitors: ['git-mia', 'outline-mia'],
+    monitors: ['foxcat', 'git-mia', 'outline-mia', 'grafana-mia', 'git-periapsis', 'outline-periapsis'],
     // [Optional] default to "Scheduled Maintenance" if not specified
-    title: 'Maintenance - server reorganization',
+    title: 'Server upgrade',
     // Description of the maintenance, will be shown at status page
     body: 'Services may experience temporary downtime',
     // Start time of the maintenance, in UNIX timestamp or ISO 8601 format
-    start: '2025-07-26T16:00:00+02:00',
+    start: '2025-08-22T11:00:00+02:00',
     // [Optional] end time of the maintenance, in UNIX timestamp or ISO 8601 format
     // if not specified, the maintenance will be considered as on-going
-    end: '2025-07-26T20:00:00+02:00',
+    end: '2025-08-22T14:00:00+02:00',
     // [Optional] color of the maintenance alert at status page, default to "yellow"
     //color: 'blue',
   },
